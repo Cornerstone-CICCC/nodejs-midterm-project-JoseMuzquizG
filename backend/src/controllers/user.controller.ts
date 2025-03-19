@@ -43,14 +43,33 @@ const login = async (req: Request<{}, {}, Omit<User,'id'>>, res: Response) => {
     res.status(200).json(user)
 }
 
+/**
+ * Logs out user
+ * 
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {void} erases all cookies.
+ */
 const logout = (req: Request, res: Response) => {
     req.session = null
     res.status(200).json({message: "Logged out successfully"})
+}
+
+/**
+ * Login / home page redirect
+ * 
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {void} Redirects to /accounts/home if logged in, to /accounts/loggin if not logged in
+ */
+const homeLoginRedir = (req: Request, res: Response) => {
+    res.status(200).send("redirect to homepage")
 }
 
 
 export default {
     addNewUser,
     login,
-    logout
+    logout,
+    homeLoginRedir
 }
