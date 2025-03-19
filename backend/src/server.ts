@@ -4,6 +4,7 @@ dotenv.config()
 import cookieSession from 'cookie-session'
 import cookieParser from 'cookie-parser'
 import pageRouter from './routes/page.routes'
+import userRouter from './routes/user.routes'
 
 const app = express()
 
@@ -15,8 +16,14 @@ const ENCRYPT_KEY = process.env.COOKIE_ENCRYPT_KEY
 if (!SIGN_KEY || !ENCRYPT_KEY) {
     throw new Error('Missing cookies keys.')
 }
+app.use(cookieSession({
+    name: 'session',
+    keys: [SIGN_KEY, ENCRYPT_KEY],
+    maxAge: 3 * 60 * 1000
+}))
 
 //Routes
+app.use('/accounts', userRouter)
 app.use('/', pageRouter)
 
 // Server Fallback

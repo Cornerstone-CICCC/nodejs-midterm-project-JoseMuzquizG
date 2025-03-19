@@ -22,20 +22,30 @@ class UserModel {
     }
     createUser(newUser) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { fullname, email, username, password } = newUser;
+            const { fullname, username, password } = newUser;
             const foundUsername = this.users.findIndex(user => user.username === username);
             if (foundUsername !== -1)
                 return false;
             const hashedPassword = yield bcrypt_1.default.hash(password, 12);
             const createdUser = {
                 fullname,
-                email,
                 username,
                 password: hashedPassword,
                 id: (0, uuid_1.v4)()
             };
             this.users.push(createdUser);
             return createdUser;
+        });
+    }
+    loginUser(username, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = this.users.find(u => u.username === username);
+            if (!user)
+                return false;
+            const samePassword = yield bcrypt_1.default.compare(password, user.password);
+            if (!samePassword)
+                return false;
+            return user;
         });
     }
 }

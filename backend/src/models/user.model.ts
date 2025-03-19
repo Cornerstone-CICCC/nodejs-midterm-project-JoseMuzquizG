@@ -8,13 +8,12 @@ class UserModel {
     ]
 
     async createUser(newUser: Omit<User, 'id'>) {
-        const { fullname, email, username, password } = newUser
+        const { fullname, username, password } = newUser
         const foundUsername = this.users.findIndex(user => user.username === username)
         if (foundUsername !== -1) return false
         const hashedPassword = await bcrypt.hash(password, 12)
         const createdUser = {
             fullname,
-            email,
             username,
             password: hashedPassword,
             id: uuidv4()
@@ -22,6 +21,15 @@ class UserModel {
         this.users.push(createdUser)
         return createdUser
     }
+
+    async loginUser(username: string, password: string) {
+        const user = this.users.find(u => u.username === username)
+        if (!user) return false
+        const samePassword = await bcrypt.compare(password, user.password)
+        if (!samePassword) return false
+        return user
+    }
+    
 }
 
 
