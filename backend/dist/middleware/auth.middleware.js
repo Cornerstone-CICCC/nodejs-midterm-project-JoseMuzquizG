@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isAccountLoggedIn = void 0;
+exports.isAccountLoggedOut = exports.isAccountLoggedIn = void 0;
 const isAccountLoggedIn = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.session && req.session.isLoggedIn) {
         next();
@@ -18,3 +18,11 @@ const isAccountLoggedIn = (req, res, next) => __awaiter(void 0, void 0, void 0, 
     res.status(301).send("Redirect to login");
 });
 exports.isAccountLoggedIn = isAccountLoggedIn;
+const isAccountLoggedOut = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    if (req.session && req.session.isLoggedIn) {
+        res.status(301).send("Redirect to /myaccount");
+        return;
+    }
+    next();
+});
+exports.isAccountLoggedOut = isAccountLoggedOut;

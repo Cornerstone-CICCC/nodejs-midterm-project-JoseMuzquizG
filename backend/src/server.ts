@@ -5,6 +5,7 @@ import cookieSession from 'cookie-session'
 import cookieParser from 'cookie-parser'
 import pageRouter from './routes/page.routes'
 import userRouter from './routes/user.routes'
+import accountRouter from './routes/account.routes'
 
 const app = express()
 
@@ -23,7 +24,8 @@ app.use(cookieSession({
 }))
 
 //Routes
-app.use('/accounts', userRouter)
+app.use('/myaccount', accountRouter)    
+app.use('/users', userRouter)
 app.use('/', pageRouter)
 
 // Server Fallback
