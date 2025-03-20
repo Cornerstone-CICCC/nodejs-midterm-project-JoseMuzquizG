@@ -71,11 +71,29 @@ const logout = (req, res) => {
  * @returns {void} Redirects to /accounts/home if logged in, to /accounts/loggin if not logged in
  */
 const homeLoginRedir = (req, res) => {
-    res.status(200).send("redirect to homepage");
+    res.status(200).send("redirect to /myaccount");
+};
+/**
+ * Delete user by id
+ *
+ * @param {Request<{id: string}>} req
+ * @param {Response} res
+ * @returns {void} returns succes or fail message
+ */
+const deleteUserById = (req, res) => {
+    const { id } = req.params;
+    const result = user_model_1.default.removeUserById(id);
+    if (!result) {
+        res.status(409).json({ message: "User not found" });
+        return;
+    }
+    req.session = null;
+    res.status(200).json({ message: "Deleted your account" });
 };
 exports.default = {
     addNewUser,
     login,
     logout,
-    homeLoginRedir
+    homeLoginRedir,
+    deleteUserById
 };

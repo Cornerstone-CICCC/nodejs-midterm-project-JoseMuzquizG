@@ -8,6 +8,7 @@ userRouter.post('/signup', userController.addNewUser)
 userRouter.post('/login', userController.login)
 userRouter.get('/logout', userController.logout)
 userRouter.get('/', isAccountLoggedIn, userController.homeLoginRedir)
+userRouter.delete('/:id', isAccountLoggedIn, userController.deleteUserById)
 
 
 export default userRouter

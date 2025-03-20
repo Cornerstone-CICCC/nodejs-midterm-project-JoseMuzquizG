@@ -9,6 +9,7 @@ dotenv_1.default.config();
 const cookie_session_1 = __importDefault(require("cookie-session"));
 const page_routes_1 = __importDefault(require("./routes/page.routes"));
 const user_routes_1 = __importDefault(require("./routes/user.routes"));
+const account_routes_1 = __importDefault(require("./routes/account.routes"));
 const app = (0, express_1.default)();
 // Middelware
 app.use(express_1.default.json());
@@ -24,7 +25,8 @@ app.use((0, cookie_session_1.default)({
     maxAge: 3 * 60 * 1000
 }));
 //Routes
-app.use('/accounts', user_routes_1.default);
+app.use('/myaccount', account_routes_1.default);
+app.use('/users', user_routes_1.default);
 app.use('/', page_routes_1.default);
 // Server Fallback
 app.use((req, res) => {

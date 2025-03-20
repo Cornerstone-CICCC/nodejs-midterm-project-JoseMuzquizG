@@ -11,4 +11,5 @@ userRouter.post('/signup', user_controller_1.default.addNewUser);
 userRouter.post('/login', user_controller_1.default.login);
 userRouter.get('/logout', user_controller_1.default.logout);
 userRouter.get('/', auth_middleware_1.isAccountLoggedIn, user_controller_1.default.homeLoginRedir);
+userRouter.delete('/:id', auth_middleware_1.isAccountLoggedIn, user_controller_1.default.deleteUserById);
 exports.default = userRouter;

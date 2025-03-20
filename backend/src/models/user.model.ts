@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 
 class UserModel {
     private users: User[] = [
-        { fullname: "Bob Ross", email: "bobross@email.com", username: "bobRoss123", password: "lolipop321", id: "vus979sgbacs8cboa7eftc*CTucjNGtuGjn"}
+        { fullname: "Bob Ross", username: "bobRoss123", password: "lolipop321", id: "vus979sgbacs8cboa7eftc*CTucjNGtuGjn", email: "bobross@email.com"}
     ]
 
     async createUser(newUser: Omit<User, 'id'>) {
@@ -22,6 +22,12 @@ class UserModel {
         return createdUser
     }
 
+    findByUsername(username: string) {
+        const user = this.users.find(u => u.username === username)
+        if (!user) return null
+        return user
+    }
+
     async loginUser(username: string, password: string) {
         const user = this.users.find(u => u.username === username)
         if (!user) return false
@@ -30,6 +36,30 @@ class UserModel {
         return user
     }
     
+    removeUserById(id: string) {
+        const foundIndex = this.users.findIndex(user => user.id === id)
+        if (foundIndex === -1) return false
+        this.users.splice(foundIndex, 1)
+        return true
+    }
+
+    async updateUser(id: string, changes: Partial<User>) {
+        const foundUser = this.users.findIndex(u => u.id === id)
+        if (foundUser === -1) return false
+        let hashedPassword = undefined
+        if (changes.password) {
+            hashedPassword = await bcrypt.hash(changes.password, 12)
+        }
+        const userChanged: User = {
+            ...this.users[foundUser],
+            fullname: changes.fullname ?? this.users[foundUser].fullname,
+            username: changes.username ?? this.users[foundUser].username,
+            password: hashedPassword ? hashedPassword : this.users[foundUser].password,
+            email: changes.email ?? this.users[foundUser].email
+        }
+        this.users[foundUser] = userChanged
+        return userChanged
+    }
 }
 
 
