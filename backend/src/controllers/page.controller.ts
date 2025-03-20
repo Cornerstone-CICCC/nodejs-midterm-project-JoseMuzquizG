@@ -12,17 +12,29 @@ const landing = (req: Request, res: Response) => {
 }
 
 /**
- * Display the Login/Signup page
+ * Renders login page
  * 
  * @param {Request} req
  * @param {Response} res
- * @returns {void} Send home page text
+ * @returns {void} Renders the login page
  */
-const register = (req: Request, res: Response) => {
-    res.status(200).send("Signup/Login Page")
+const loginPage = (req: Request, res: Response) => {
+    res.status(200).send("login page")
+}
+
+/**
+ * Renders signup page
+ * 
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {void} Renders the login page
+ */
+const signupPage = (req: Request, res: Response) => {
+    res.status(200).send("signup page")
 }
 
 export default {
     landing,
-    register
+    loginPage,
+    signupPage,
 }
