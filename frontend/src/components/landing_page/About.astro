@@ -1,0 +1,40 @@
+<div id="about-us">
+    <h2>ABOUT THIS PAGE</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere, voluptatum quibusdam iste est doloribus veniam eos modi non cum exercitationem fugiat ea delectus labore dolore. Consequuntur exercitationem, harum eos earum beatae, numquam quaerat dicta necessitatibus, nemo optio nihil error quia!</p>
+</div>
+
+<style>
+    #about-us {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem; /* 5.625rem */
+        text-align: center;
+        margin: 0 auto;
+        max-width: 1024px;
+    }
+
+    #about-us h2 {
+        font-size: 2rem;
+    }
+    
+    #about-us p {
+        font-size: 1.25rem;
+        text-align: justify;
+    }
+
+    @media screen and (min-width: 1024px) {
+        #about-us {
+            gap: 5.625rem;
+            padding: 0 2rem;
+        }
+        #about-us h2 {
+            font-size: 3rem;
+        }
+        #about-us p {
+            font-size: 2rem;
+        }
+    }
+</style>
