@@ -1,5 +1,7 @@
 body, h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
 * { box-sizing: border-box; }
+ul, ol, li { list-style: none; }
+input::placeholder {color: #BAC0C9;}
 
 .itim {
     font-family: "Itim", cursive;
@@ -12,7 +14,41 @@ body, h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-}  
+    color: #193c4d;
+}
+
+.inter-b {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #193c4d;
+}
+
+.inter-sb {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    color: #193c4d;
+}
+
+.inter-off {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #64748B;
+}
+
+.inter-btn {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #ffffff;
+}
+
 
 .calistoga {
     font-family: "Calistoga", serif;

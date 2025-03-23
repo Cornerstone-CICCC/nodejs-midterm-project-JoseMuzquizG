@@ -6,10 +6,15 @@ import cookieParser from 'cookie-parser'
 import pageRouter from './routes/page.routes'
 import userRouter from './routes/user.routes'
 import accountRouter from './routes/account.routes'
+import cors from 'cors'
 
 const app = express()
 
 // Middelware
+app.use(cors({
+    origin: 'http://localhost:4321',
+    credentials: true
+}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const SIGN_KEY = process.env.COOKIE_SIGN_KEY

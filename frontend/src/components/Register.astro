@@ -1,0 +1,128 @@
+---
+const { register } = Astro.props
+---
+
+<div class="register inter">
+    <div class="register-content">
+        <div class="header">
+            <h2>{register}</h2>
+            <p>{register} to create and save your relaxation methods</p>
+        </div>
+        <form id="register" class="inter-sb">
+            <label class="fullname">
+                Fullname: <br>
+                    <input class="inter-off" type="text" name="fullname" placeholder="John Smith" required>
+            </label>
+            <label>
+                Username: <br>
+                    <input type="text" name="username" placeholder="johnnysmithy123" required>
+            </label>
+            <label>
+                Password: <br>
+                    <input type="password" name="password" placeholder="Password" required>
+            </label>
+            <button class="inter-btn">{register}</button>
+        </form>
+        <div class="register-question">
+            <p>Already have an account? <span><a href="/login">Log in</a></span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const registerType = document.querySelector(".header h2")
+    if (registerType?.innerHTML === "Log in") {
+        const fullname = document.querySelector(".fullname")
+        if (fullname) fullname.innerHTML = ""
+        const redir = document.querySelector(".register-question")
+        if (redir) redir.innerHTML = `<p>You don't have an account? <span><a href="/signup">Sign up</a></span></p>`
+        
+        const form = document.querySelector('#register') as HTMLFormElement
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+    
+            const formData = new FormData(e.target as HTMLFormElement)
+            const formObj = Object.fromEntries(formData.entries()) // Converts form data to JS object
+            const res = await fetch(`http://localhost:5432/users/login`, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formObj)
+            })
+            if (!res.ok) {
+                console.error("Something went wrong")
+                return
+            }
+            console.log("myaccount")
+            window.location.href = "/myaccount"
+        })
+    }
+
+    const form = document.querySelector('#register') as HTMLFormElement
+    form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    
+    const formData = new FormData(e.target as HTMLFormElement)
+    const formObj = Object.fromEntries(formData.entries()) // Converts form data to JS object
+    const res = await fetch(`http://localhost:5432/users/signup`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formObj)
+    })
+    if (!res.ok) {
+            console.error("Something went wrong")
+            return
+        }
+        console.log("login")
+        window.location.href = "/login"
+    })
+</script>
+
+
+<style>
+    .register {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    .register-content {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid #868686;
+        box-shadow: 1px 1px 5px #86868686;
+        gap: 1.5rem;
+        max-width: 400px;
+        background-color: white;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+    #register {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-size: .875rem;
+    }
+    #register input {
+        border-radius: 5px;
+        border: 1px solid #868686;
+        font-size: .875rem;
+        width: 100%;
+        padding: .5rem .75rem;
+        background-color: #F9FBFB;
+    }
+    button {
+        padding: .75rem 0;
+        border-radius: 8px;
+        border: none;
+        background-color: #0AA3C2;
+    }
+</style>
