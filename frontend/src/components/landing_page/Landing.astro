@@ -10,6 +10,24 @@
 </div>
 
 <script>
+    const checkAuth = async () => {
+        const res = await fetch(`http://localhost:5432/myaccount`, {
+            method: "GET",
+            credentials: "include"
+        })
+        if (!res.ok) {
+            window.location.href = "/login"
+            return
+        }
+        window.location.href = "/myaccount"
+    }
+
+    const start = document.querySelector("#start-btn") as HTMLButtonElement
+    start.addEventListener('click', async (e) => {
+        e.preventDefault()
+        checkAuth()
+    })
+
     
 </script>
 
@@ -21,7 +39,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 3rem; /* 5.625rem */
+        gap: 3rem;
         max-width: 1024px;
     }
 

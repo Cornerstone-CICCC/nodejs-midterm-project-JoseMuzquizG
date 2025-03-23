@@ -1,19 +1,5 @@
 <div class="my-account">My account</div>
 
 <script>
-    const profile = document.querySelector('.profile') as HTMLDivElement
-  
-    const checkAuth = async () => {
-      const res = await fetch(`http://localhost:5432/myaccount`, {
-        method: "GET",
-        credentials: "include"
-      })
-      if (!res.ok) {
-        window.location.href = "/myaccount"
-        return
-      }
-      const data = await res.json()
-      }
-  
-    checkAuth()
-  </script>
+
+</script>

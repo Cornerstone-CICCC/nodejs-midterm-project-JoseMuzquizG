@@ -52,10 +52,9 @@ const { register } = Astro.props
                 body: JSON.stringify(formObj)
             })
             if (!res.ok) {
-                console.error("Something went wrong")
+                console.error("Login details are incorrect")
                 return
             }
-            console.log("myaccount")
             window.location.href = "/myaccount"
         })
     }
