@@ -5,7 +5,7 @@ export const isAccountLoggedIn = async (req: Request, res: Response, next: NextF
         next()
         return
     }
-    res.status(301).send("Redirect to login")
+    res.status(301).redirect("/login")
 }
 
 export const isAccountLoggedOut = async (req: Request, res: Response, next: NextFunction) => {

@@ -1,5 +1,6 @@
 ---
 import Sidebar from "./Sidebar.astro"
+const { page } = Astro.props
 ---
 
 <header class="header">
@@ -13,7 +14,7 @@ import Sidebar from "./Sidebar.astro"
     </div>
     <div class="overlay"></div>
     <div class="section inter-b">HOME</div>
-    <div class="message inter-off">Hello, John Smith</div>
+    <div class="message inter-off"></div>
 </header>
 
 <script>

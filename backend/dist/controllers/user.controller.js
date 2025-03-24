@@ -71,7 +71,7 @@ const logout = (req, res) => {
  * @returns {void} Redirects to /accounts/home if logged in, to /accounts/loggin if not logged in
  */
 const homeLoginRedir = (req, res) => {
-    res.status(200).send("redirect to /myaccount");
+    res.status(200).redirect("/myaccount");
 };
 /**
  * Delete user by id

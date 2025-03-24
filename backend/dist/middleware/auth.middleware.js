@@ -15,7 +15,7 @@ const isAccountLoggedIn = (req, res, next) => __awaiter(void 0, void 0, void 0, 
         next();
         return;
     }
-    res.status(301).send("Redirect to login");
+    res.status(301).redirect("/login");
 });
 exports.isAccountLoggedIn = isAccountLoggedIn;
 const isAccountLoggedOut = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
