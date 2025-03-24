@@ -1,7 +1,8 @@
-body, h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
+body, h1, h2, h3, h4, h5, h6, p, menu { margin: 0; padding: 0; }
 * { box-sizing: border-box; }
 ul, ol, li { list-style: none; }
 input::placeholder {color: #BAC0C9;}
+button:hover{cursor: pointer;}
 
 .itim {
     font-family: "Itim", cursive;
