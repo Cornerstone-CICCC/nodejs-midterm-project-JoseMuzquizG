@@ -63,7 +63,7 @@ const logout = (req: Request, res: Response) => {
  * @returns {void} Redirects to /accounts/home if logged in, to /accounts/loggin if not logged in
  */
 const homeLoginRedir = (req: Request, res: Response) => {
-    res.status(200).send("redirect to /myaccount")
+    res.status(200).redirect("/myaccount")
 }
 
 /**

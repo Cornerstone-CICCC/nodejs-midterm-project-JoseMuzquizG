@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import pageController from '../controllers/page.controller'
-import { isAccountLoggedIn, isAccountLoggedOut } from '../middleware/auth.middleware'
+import { isAccountLoggedOut } from '../middleware/auth.middleware'
 
 const pageRouter = Router()
 
