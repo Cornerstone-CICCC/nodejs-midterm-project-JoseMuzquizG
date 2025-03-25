@@ -1,0 +1,50 @@
+---
+import Sidebar from "../components/Sidebar.astro"
+import Header from "../components/Header.astro"
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Relappxation</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/src/styles/global.css">
+	</head>
+	<body>
+		<div class="container">
+            <div class="side">
+				<Sidebar />
+			</div>
+			<main class="inter">
+				<Header />
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
+
+<style>
+	.container {
+		display: flex;
+	}
+
+	main{ 
+		width: 100%;
+	}
+
+	.side {
+		display: none;
+	}
+
+	@media screen and (min-width: 768px) {
+		.side {
+			display: block;
+		}
+	}
+</style>

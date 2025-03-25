@@ -1,0 +1,63 @@
+body, h1, h2, h3, h4, h5, h6, p, menu { margin: 0; padding: 0; }
+* { box-sizing: border-box; }
+ul, ol, li { list-style: none; }
+input::placeholder {color: #BAC0C9;}
+button:hover{cursor: pointer;}
+
+.itim {
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #193c4d;
+}
+
+.inter-b {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #193c4d;
+}
+
+.inter-sb {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    color: #193c4d;
+}
+
+.inter-off {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #64748B;
+}
+
+.inter-btn {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #ffffff;
+    padding: .75rem 0;
+    border-radius: 8px;
+    border: none;
+    background-color: #0AA3C2;
+}
+
+
+.calistoga {
+    font-family: "Calistoga", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
